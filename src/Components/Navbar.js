@@ -1,63 +1,44 @@
+import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar'
+import Form from 'react-bootstrap/Form';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import DropdownList from './DropdownList';
-import { Link } from "react-router-dom"
 
 export default function Bar() {
   return (
     <>
-      {[false].map((expand) => (
-        <nav key={expand} expand={expand.toString()} className="nav">
+      {['xxl'].map((expand) => (
+        <Navbar key={expand} expand={expand} className="bg-body-tertiary mb-3">
           <Container fluid>
-            <Link to="/Home" className='site-title'>Reminders</Link>
+            <Navbar.Brand href="/Home">Reminders</Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
-           <Navbar.Collapse>
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
               aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-              placement="end">
+              placement="end"
+            >
               <Offcanvas.Header closeButton>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <ul>
-                  <li>
-                  <CustomLink to="/Home">Home</CustomLink>
-                  </li>
-                  <li>
-                  <CustomLink to="/CreateNewReminders">Create New Reminder</CustomLink>
-                  </li>
-                  <li>
-                  <CustomLink to="/ViewReminders">View Reminders</CustomLink>
-                  </li>
-                  <li>
+                <Nav className="justify-content-end flex-grow-1 pe-3">
+                  <Nav.Link href="/Home">Home</Nav.Link>
+                  <Nav.Link href="/CreateNewReminders">Create New Reminders</Nav.Link>
+                  <Nav.Link href="/ViewReminders">View Reminders</Nav.Link>
                   <NavDropdown
                     title="Complete Reminders"
-                    id={`offcanvasNavbarDropdown-expand-${expand}`}>
-                    <NavDropdown.Item><DropdownList/></NavDropdown.Item>
+                    id={`offcanvasNavbarDropdown-expand-${expand}`}
+                  >
+                    <NavDropdown.Item href="#action3">Reminder List Here</NavDropdown.Item>
                   </NavDropdown>
-                  </li>
-                  <li>
-                  <CustomLink to="/RecentlyCompleted">Recently Completed Reminders</CustomLink>
-                  </li>
-                </ul>
-               </Offcanvas.Body>
-            </Navbar.Offcanvas>  
-            </Navbar.Collapse>
-            </Container>
-        </nav>
+                  <Nav.Link href="/RecentlyCompleted">Recently Completed Reminders</Nav.Link>
+                </Nav>
+              </Offcanvas.Body>
+            </Navbar.Offcanvas>
+          </Container>
+        </Navbar>
       ))}
     </>
-  );
-}
-
-function CustomLink({ to, children, ...props }) {
-  const path = window.location.pathname
-
-  return (
-    <Link to={to} className={path === to ? "active" : ""} {...props}>
-      {children}
-    </Link>
   );
 }

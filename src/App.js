@@ -11,19 +11,25 @@ import './Index.css'
 
 
 export default function App() {
+  let component
+  switch(window.location.pathname) {
+    case "/":
+      component = <App />
+      break
+    case "/CreateNewReminders":
+      component = <CreateNewReminders />
+      break
+    case "/ViewReminders":
+      component = <ViewReminders />
+      break
+    case "/RecentlyCompleted":
+      component = <RecentlyCompleted />
+      break
+  }
   return (
     <>
     <Bar/>
-    <div className='container'>
-      <Router>
-        <Switch>
-        <Route path="/Home" element={<Home />} />
-        <Route path="/CreateNewReminders" element={<CreateNewReminders />} />
-        <Route path="/ViewReminders" element={<ViewReminders />} />
-        <Route path="/RecentlyCompleted" element={<RecentlyCompleted/>} />
-        </Switch>
-      </Router>
-    </div>
+    {component}
     </>
   );
 }
