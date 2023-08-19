@@ -9,10 +9,10 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 export default function Bar() {
   return (
     <>
-      {['xxl'].map((expand) => (
+      {[false].map((expand) => (
         <Navbar key={expand} expand={expand} className="bg-body-tertiary mb-3">
           <Container fluid>
-            <Navbar.Brand href="/Home">Reminders</Navbar.Brand>
+            <Navbar.Brand href="/">Reminders</Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
@@ -23,7 +23,7 @@ export default function Bar() {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="/Home">Home</Nav.Link>
+                  <Nav.Link href="/">Home</Nav.Link>
                   <Nav.Link href="/CreateNewReminders">Create New Reminders</Nav.Link>
                   <Nav.Link href="/ViewReminders">View Reminders</Nav.Link>
                   <NavDropdown

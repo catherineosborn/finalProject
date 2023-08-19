@@ -33,3 +33,9 @@ body{
 .site-title {
     font-size: 2rem;
 }
+
+.recentlyCompletedLink{
+    color: inherit;
+    text-decoration: underline;
+    font: 2rem bolder;
+}
