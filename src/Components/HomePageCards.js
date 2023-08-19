@@ -1,7 +1,9 @@
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import React from "react";
+import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
-export default function HomePageCard() {
+export default function HomePageCard({ to }) {
   return (
     <Card className="text-center">
       <Card.Header>Featured</Card.Header>
@@ -10,7 +12,9 @@ export default function HomePageCard() {
         <Card.Text>
           With supporting text below as a natural lead-in to additional content.
         </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Link to={to}>
+          <Button variant="primary">Go somewhere</Button>
+        </Link>
       </Card.Body>
       <Card.Footer className="text-muted">2 days ago</Card.Footer>
     </Card>

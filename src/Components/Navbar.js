@@ -5,8 +5,10 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import React from 'react';
+import DropdownList from './DropdownList';
 
-export default function Bar() {
+export default function Bar({ reminders, handleCompleteReminder }) {
   return (
     <>
       {[false].map((expand) => (
@@ -30,7 +32,7 @@ export default function Bar() {
                     title="Complete Reminders"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
                   >
-                    <NavDropdown.Item href="#action3">Reminder List Here</NavDropdown.Item>
+                    <DropdownList reminders={reminders} handleCompleteReminder={handleCompleteReminder} />
                   </NavDropdown>
                   <Nav.Link href="/RecentlyCompleted">Recently Completed Reminders</Nav.Link>
                 </Nav>

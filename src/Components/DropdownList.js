@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React from 'react';
+import DropdownCards from './DropdownCards';
 
-export default function DropdownList() {
-    const [reminders, setReminders] = useState([]);
-    const MOCK_API_URL = "https://64d6529b754d3e0f1361f3fa.mockapi.io/Reminder";
+export default function DropdownList({ reminders, handleCompleteReminder }) {
+    if (!reminders) {
+        return <div>Loading reminders...</div>; 
+      }
 
-    useEffect(() => {
-        fetch(MOCK_API_URL)
-            .then(data => setReminders(data))
-            .catch(error => console.error("Error fetching reminders: ", error));
-    }, []);
-    
-    return(
-        "list here"
-    );
+      return (
+        <div>
+          {reminders.map((reminder) => (
+            <DropdownCards
+              key={reminder.id}
+              reminder={reminder}
+              onComplete={() => handleCompleteReminder(reminder)}
+            />
+          ))}
+        </div>
+      );
 }
